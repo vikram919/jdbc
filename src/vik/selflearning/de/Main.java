@@ -18,7 +18,8 @@ public class Main {
 
 		try (Connection conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				ResultSet resultSet = stmt.executeQuery("SELECT * FROM tours");) {
+				/**Limit the query to 5 rows*/
+				ResultSet resultSet = stmt.executeQuery("SELECT * FROM tours LIMIT 0, 5");) {
 			/** scroll to the end of the rows*/
 			resultSet.last();
 			/** gets the index of the last row and get the index of the row*/
